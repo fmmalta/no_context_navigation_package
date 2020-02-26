@@ -9,8 +9,34 @@ This service use a GlobalKey of type NavigatorState which can be used across the
 Now, you only need to this:
 
     navService.pushNamed('/detail_screen', args: 'From Home Screen');
+    
+But first, add the **navigationKey** to your MaterialApp's navigationKey property:
 
-Use **navService** object to be able to acess those methods:
+```dart
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      //Over here
+      navigatorKey: NavigationService.navigationKey,
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (context) => HomeScreen());
+          case '/detail_screen':
+            return MaterialPageRoute(
+                builder: (context) =>
+                    DetailScreen(message: settings.arguments));
+          default:
+            return null;
+        }
+      },
+    );
+  }
+}
+```
+
+Use **navService object** to be able to acess those methods:
 
     import 'package:flutter/material.dart';
     
