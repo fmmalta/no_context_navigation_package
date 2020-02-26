@@ -8,8 +8,9 @@ This service use a GlobalKey of type NavigatorState which can be used across the
 
 Now, you only need to this:
 
-    navService.pushNamed('/detail_screen', args: 'From Home Screen');
-    
+```dart
+navService.pushNamed('/detail_screen', args: 'From Home Screen');
+```
 But first, add the **navigationKey** to your MaterialApp's navigationKey property:
 
 ```dart
@@ -37,48 +38,48 @@ class MyApp extends StatelessWidget {
 ```
 
 Use **navService object** to be able to acess those methods:
+```dart
+import 'package:flutter/material.dart';
 
-    import 'package:flutter/material.dart';
-    
-    final NavigationService navService = NavigationService();
-    
-    class NavigationService<T, U> {
-      static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
-    
-      Future<T> pushNamed(String routeName, {Object args}) async {
-        return await navigationKey.currentState.pushNamed<T>(
-          routeName,
-          arguments: args,
-        );
-      }
-    
-      Future<T> push(Route<T> route) async {
-        return await navigationKey.currentState.push<T>(route);
-      }
-    
-      Future<T> pushReplacementNamed(String routeName, {Object args}) async {
-        return await navigationKey.currentState.pushReplacementNamed<T, U>(
-          routeName,
-          arguments: args,
-        );
-      }
-    
-      Future<T> pushNamedAndRemoveUntil(String routeName, {Object args}) async {
-        return await navigationKey.currentState.pushNamedAndRemoveUntil<T>(
-          routeName,
-          (Route<dynamic> route) => false,
-          arguments: args,
-        );
-      }
-    
-      Future<bool> maybePop([Object args]) async {
-        return await navigationKey.currentState.maybePop<bool>(args);
-      }
-    
-      bool canPop() => navigationKey.currentState.canPop();
-    
-      bool goBack({Object result}) => navigationKey.currentState.pop<bool>(result);
-    }
-    
+final NavigationService navService = NavigationService();
+
+class NavigationService<T, U> {
+  static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+
+  Future<T> pushNamed(String routeName, {Object args}) async {
+    return await navigationKey.currentState.pushNamed<T>(
+      routeName,
+      arguments: args,
+    );
+  }
+
+  Future<T> push(Route<T> route) async {
+    return await navigationKey.currentState.push<T>(route);
+  }
+
+  Future<T> pushReplacementNamed(String routeName, {Object args}) async {
+    return await navigationKey.currentState.pushReplacementNamed<T, U>(
+      routeName,
+      arguments: args,
+    );
+  }
+
+  Future<T> pushNamedAndRemoveUntil(String routeName, {Object args}) async {
+    return await navigationKey.currentState.pushNamedAndRemoveUntil<T>(
+      routeName,
+      (Route<dynamic> route) => false,
+      arguments: args,
+    );
+  }
+
+  Future<bool> maybePop([Object args]) async {
+    return await navigationKey.currentState.maybePop<bool>(args);
+  }
+
+  bool canPop() => navigationKey.currentState.canPop();
+
+  bool goBack({Object result}) => navigationKey.currentState.pop<bool>(result);
+}
+ ```   
 
 Hope you enjoy!
