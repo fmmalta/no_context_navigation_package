@@ -1,3 +1,11 @@
+## [1.0.1] - 24/03/2020
+
+* Fixed error on goBack function
+
+## [1.0.0] - 19/03/2020
+
+* Updated to 1.0.0
+
 ## [0.0.3] - 26/02/2020.
 
 * Updated README.md and added a MIT license.
