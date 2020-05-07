@@ -1,4 +1,4 @@
-## [1.0.1] - 24/03/2020
+## [1.0.2] - 06/05/2020
 
 * Fixed error on goBack function
 
