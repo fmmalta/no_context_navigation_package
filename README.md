@@ -23,11 +23,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
-            return MaterialPageRoute(builder: (context) => HomeScreen());
+            return MaterialPageRoute(builder: (_) => HomeScreen());
           case '/detail_screen':
-            return MaterialPageRoute(
-                builder: (context) =>
-                    DetailScreen(message: settings.arguments));
+            return MaterialPageRoute(builder: (_) => DetailScreen(message: settings.arguments));
           default:
             return null;
         }
@@ -46,39 +44,47 @@ final NavigationService navService = NavigationService();
 class NavigationService<T, U> {
   static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 
-  Future<T> pushNamed(String routeName, {Object args}) async {
-    return await navigationKey.currentState.pushNamed<T>(
-      routeName,
-      arguments: args,
-    );
-  }
+  Future<T> pushNamed(String routeName, {Object args}) async =>
+      navigationKey.currentState.pushNamed<T>(
+        routeName,
+        arguments: args,
+      );
 
-  Future<T> push(Route<T> route) async {
-    return await navigationKey.currentState.push<T>(route);
-  }
+  Future<T> push(Route<T> route) async =>
+      navigationKey.currentState.push<T>(route);
 
-  Future<T> pushReplacementNamed(String routeName, {Object args}) async {
-    return await navigationKey.currentState.pushReplacementNamed<T, U>(
-      routeName,
-      arguments: args,
-    );
-  }
+  Future<T> pushReplacementNamed(String routeName, {Object args}) async =>
+      navigationKey.currentState.pushReplacementNamed<T, U>(
+        routeName,
+        arguments: args,
+      );
 
-  Future<T> pushNamedAndRemoveUntil(String routeName, {Object args}) async {
-    return await navigationKey.currentState.pushNamedAndRemoveUntil<T>(
-      routeName,
-      (Route<dynamic> route) => false,
-      arguments: args,
-    );
-  }
+  Future<T> pushNamedAndRemoveUntil(
+    String routeName, {
+    Object args,
+    bool keepPreviousPages = false,
+  }) async =>
+      navigationKey.currentState.pushNamedAndRemoveUntil<T>(
+        routeName,
+        (Route<dynamic> route) => keepPreviousPages,
+        arguments: args,
+      );
 
-  Future<bool> maybePop([Object args]) async {
-    return await navigationKey.currentState.maybePop<bool>(args);
-  }
+  Future<T> pushAndRemoveUntil(
+    Route<T> route, {
+    bool keepPreviousPages = false,
+  }) async =>
+      navigationKey.currentState.pushAndRemoveUntil<T>(
+        route,
+        (Route<dynamic> route) => keepPreviousPages,
+      );
+
+  Future<bool> maybePop([Object args]) async =>
+      navigationKey.currentState.maybePop<bool>(args);
 
   bool canPop() => navigationKey.currentState.canPop();
 
-  bool goBack({Object result}) => navigationKey.currentState.pop<bool>(result);
+  void goBack({T result}) => navigationKey.currentState.pop<T>(result);
 }
  ```   
 
