@@ -1,3 +1,6 @@
+## [1.0.4] - 15/01/2021
+
+* Added popUntil function
 ## [1.0.3] - 03/09/2020
 
 * Added pushAndRemoveUntil and updated pushNamedAndRemoveUntil function.

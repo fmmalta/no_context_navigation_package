@@ -46,4 +46,8 @@ class NavigationService<T, U> {
   bool canPop() => navigationKey.currentState.canPop();
 
   void goBack({T result}) => navigationKey.currentState.pop<T>(result);
+
+  void popUntil(String route) {
+    navigationKey.currentState.popUntil(ModalRoute.withName(route));
+  }
 }
