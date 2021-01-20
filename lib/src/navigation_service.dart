@@ -50,4 +50,7 @@ class NavigationService<T, U> {
   void popUntil(String route) {
     navigationKey.currentState.popUntil(ModalRoute.withName(route));
   }
+
+  RouteSettings pageSettings() =>
+      ModalRoute.of<RouteSettings>(navigationKey.currentContext).settings;
 }

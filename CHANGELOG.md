@@ -1,6 +1,7 @@
-## [1.0.4] - 15/01/2021
+## [1.0.5] - 20/01/2021
 
 * Added popUntil function
+* Added pageSettings to get current RouteSettings
 ## [1.0.3] - 03/09/2020
 
 * Added pushAndRemoveUntil and updated pushNamedAndRemoveUntil function.
