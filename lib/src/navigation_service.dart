@@ -51,6 +51,6 @@ class NavigationService<T, U> {
     navigationKey.currentState.popUntil(ModalRoute.withName(route));
   }
 
-  RouteSettings pageSettings() =>
-      ModalRoute.of<RouteSettings>(navigationKey.currentContext).settings;
+  RouteSettings pageSettings(BuildContext context) =>
+      ModalRoute.of<RouteSettings>(context).settings;
 }
