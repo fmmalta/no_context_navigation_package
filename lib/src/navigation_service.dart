@@ -23,21 +23,21 @@ class NavigationService<T, U> {
   Future<T> pushNamedAndRemoveUntil(
     String routeName, {
     Object args,
-    bool keepInitialPage = false,
+    bool Function(Route<dynamic>) predicate,
   }) async =>
       navigationKey.currentState.pushNamedAndRemoveUntil<T>(
         routeName,
-        (Route<dynamic> route) => keepInitialPage,
+        predicate ?? (_) => false,
         arguments: args,
       );
 
   Future<T> pushAndRemoveUntil(
     Route<T> route, {
-    bool keepInitialPage = false,
+    bool Function(Route<dynamic>) predicate,
   }) async =>
       navigationKey.currentState.pushAndRemoveUntil<T>(
         route,
-        (Route<dynamic> route) => keepInitialPage,
+        predicate ?? (_) => false,
       );
 
   Future<bool> maybePop([Object args]) async =>
