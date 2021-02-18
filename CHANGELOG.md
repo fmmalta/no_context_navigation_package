@@ -1,3 +1,6 @@
+## [1.0.7] - 18/02/2021
+* Added Generic Type to each function
+
 ## [1.0.6] - 17/02/2021
 * Updated pushNamedAndRemoveUntil
 * Updated pushAndRemoveUntil
