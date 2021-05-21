@@ -1,3 +1,6 @@
+## [2.0.0] - 21/05/2021
+* Migrated to null safety. Thanks [https://github.com/JEuler]JEuler
+
 ## [1.0.7] - 18/02/2021
 * Added Generic Type to each function
 
