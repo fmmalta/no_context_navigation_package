@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           case '/detail_screen':
             return MaterialPageRoute(
                 builder: (context) =>
-                    DetailScreen(message: settings.arguments));
+                    DetailScreen(message: settings.arguments as String?));
           default:
             return null;
         }
