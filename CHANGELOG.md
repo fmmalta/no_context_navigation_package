@@ -1,3 +1,6 @@
+## [2.1.0] - 21/05/2021
+* Updated methods. Added more null checking. Updated examples.
+
 ## [2.0.0] - 21/05/2021
 * Migrated to null safety. Thanks [https://github.com/JEuler]JEuler
 
