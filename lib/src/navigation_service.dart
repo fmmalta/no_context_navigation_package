@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 final NavigationService navService = NavigationService();
 
-typedef _RoutePredicate = bool Function(Route<dynamic>)?;
+typedef _RoutePredicate = bool Function(Route<dynamic>);
 
 class NavigationService {
   static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
@@ -36,7 +36,7 @@ class NavigationService {
   Future<T?> pushNamedAndRemoveUntil<T extends Object?>(
     String routeName, {
     Object? args,
-    _RoutePredicate predicate,
+    _RoutePredicate? predicate,
   }) async {
     return navigationKey.currentState?.pushNamedAndRemoveUntil<T>(
       routeName,
@@ -47,7 +47,7 @@ class NavigationService {
 
   Future<T?> pushAndRemoveUntil<T extends Object?>(
     Route<T> route, {
-    _RoutePredicate predicate,
+    _RoutePredicate? predicate,
   }) async {
     return navigationKey.currentState?.pushAndRemoveUntil<T>(
       route,
