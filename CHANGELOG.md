@@ -1,3 +1,5 @@
+## [2.1.2] - 14/07/2021
+* Null safety fix for Error: Can't create typedef from nullable type.
 ## [2.1.1] - 21/05/2021
 * Rolledback and fixed changes
 

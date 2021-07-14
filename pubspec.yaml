@@ -1,6 +1,6 @@
 name: no_context_navigation
 description: A Flutter package built to navigate between screens (routes) without using context (BuildContext).
-version: 2.1.1
+version: 2.1.2
 homepage: https://github.com/fmmalta/no_context_navigation_package
 
 environment:
